@@ -56,7 +56,7 @@ public:
       co_return std::string();
     }
 
-    co_await this_coro::reset_cancellation_state();
+    co_await this_coro::reset_cancellation_state(); // Reset to default, which is terminal only.
 
     if (e)
     {
