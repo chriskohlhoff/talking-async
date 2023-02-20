@@ -51,7 +51,8 @@ public:
         use_nothrow_awaitable
       );
 
-    if ((co_await this_coro::cancellation_state).cancelled() != cancellation_type::none)
+    auto cs = co_await this_coro::cancellation_state;
+    if (cs.cancelled() != cancellation_type::none)
     {
       co_return std::string();
     }
